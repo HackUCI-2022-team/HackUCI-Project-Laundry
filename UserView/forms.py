@@ -12,9 +12,8 @@ class LaundryForm(ModelForm):
 
 class SignUpForm(UserCreationForm):
     email = forms.EmailField(max_length=254, help_text='Required. Inform a valid UCI email address.')
-    student_id = forms.CharField(max_length=8, help_text="Required.")
 
     class Meta:
         model = User
-        fields = ('username', 'student_id', 'email', 'password1', 'password2', )
+        fields = ('username', 'email', 'password1', 'password2', )
 
