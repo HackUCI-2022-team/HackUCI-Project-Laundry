@@ -1,3 +1,4 @@
+from random import choice
 from django.db import models
 from django.contrib.auth.models import User
 from django.dispatch import receiver
@@ -5,7 +6,7 @@ from django.dispatch import receiver
 # Create your models here
 class Floor(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
-    
+
 class Laundry(models.Model):
     heaviness_choices = [
         ('light', 'LIGHT'),
@@ -29,14 +30,21 @@ class Laundry(models.Model):
     cycle = models.CharField(choices=cycle_choices, max_length=8)
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     mode = models.CharField(choices=mode_choices, max_length=8)
-    floor = models.ForeignKey(Floor, on_delete=models.CASCADE)
+    floor_key = models.ForeignKey(Floor, on_delete=models.CASCADE)
 
     def __str__(self) -> str:
         return self.user + "'s Laundry Machine"
 
 class Dryer(models.Model):
+    mode_choices = [
+        ('free', 'FREE'),
+        ('occupied', 'OCCUPIED'),
+        ('neutral', 'NEUTRAL')
+    ]
+
     user = models.ForeignKey(User, on_delete=models.CASCADE)
-    mode = models.BooleanField()
+    mode = models.CharField(choices=mode_choices, max_length=8)
+    floor_key = models.ForeignKey(Floor, on_delete=models.CASCADE)
 
     def __str__(self) -> str:
         return self.user + "'s Dryer Machine"
