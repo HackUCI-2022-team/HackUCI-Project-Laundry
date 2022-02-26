@@ -2,10 +2,10 @@ from django.db import models
 from django.contrib.auth.models import User
 from django.dispatch import receiver
 
-# Create your models here.
+# Create your models here
 class Floor(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
-
+    
 class Laundry(models.Model):
     heaviness_choices = [
         ('light', 'LIGHT'),
@@ -29,7 +29,7 @@ class Laundry(models.Model):
     cycle = models.CharField(choices=cycle_choices, max_length=8)
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     mode = models.CharField(choices=mode_choices, max_length=8)
-    # floor = models.ForeignKey(Floor)
+    floor = models.ForeignKey(Floor)
 
     def __str__(self) -> str:
         return self.user + "'s Laundry Machine"
