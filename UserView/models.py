@@ -3,6 +3,9 @@ from django.contrib.auth.models import User
 from django.dispatch import receiver
 
 # Create your models here.
+class Floor(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+
 class Laundry(models.Model):
     heaviness_choices = [
         ('light', 'LIGHT'),
@@ -16,27 +19,20 @@ class Laundry(models.Model):
         ('perm', 'PERM')
     ]
 
+    mode_choices = [
+        ('free', 'FREE'),
+        ('occupied', 'OCCUPIED'),
+        ('neutral', 'NEUTRAL')
+    ]
+
     heaviness = models.CharField(choices=heaviness_choices, max_length=6)
     cycle = models.CharField(choices=cycle_choices, max_length=8)
     user = models.ForeignKey(User, on_delete=models.CASCADE)
-    mode = models.BooleanField()
+    mode = models.CharField(choices=mode_choices, max_length=8)
+    # floor = models.ForeignKey(Floor)
 
     def __str__(self) -> str:
         return self.user + "'s Laundry Machine"
-
-class Location(models.Model):
-    dorm_choices = [
-        ('mesa', 'MESA'),
-        ('middle earth', 'MIDDLE EARTH')
-    ]
-
-    user = models.ForeignKey(User, on_delete=models.CASCADE)
-    dorm = models.CharField(choices=dorm_choices, max_length=12)
-    #hall 
-    floor = models.IntegerField()
-
-    def __str__(self) -> str:
-        return self.user + "'s Location"
 
 class Dryer(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
@@ -53,3 +49,16 @@ class Notification(models.Model):
     def __str__(self) -> str:
         return "Message To: " + self.recipient.username
 
+# class Location(models.Model):
+#     dorm_choices = [
+#         ('mesa', 'MESA'),
+#         ('middle earth', 'MIDDLE EARTH')
+#     ]
+
+#     user = models.ForeignKey(User, on_delete=models.CASCADE)
+#     dorm = models.CharField(choices=dorm_choices, max_length=12)
+#     #hall 
+#     floor = models.ForeignKey(Floor)
+
+#     def __str__(self) -> str:
+#         return self.user + "'s Location"
