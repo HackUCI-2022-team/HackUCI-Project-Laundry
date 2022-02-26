@@ -3,7 +3,12 @@ from django.http import HttpResponse
 from django.contrib.auth import login, authenticate, logout
 from .forms import SignUpForm
 from django.contrib import messages
+from django.contrib.auth.decorators import login_required
 
+def pre_home_page(request):
+    pass
+
+@login_required(login_url='login')
 def home_page(request):
     return render(request, 'home/home.html')
 
