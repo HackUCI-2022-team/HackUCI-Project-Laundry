@@ -29,7 +29,7 @@ class Laundry(models.Model):
     cycle = models.CharField(choices=cycle_choices, max_length=8)
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     mode = models.CharField(choices=mode_choices, max_length=8)
-    floor = models.ForeignKey(Floor)
+    floor = models.ForeignKey(Floor, on_delete=models.CASCADE)
 
     def __str__(self) -> str:
         return self.user + "'s Laundry Machine"
