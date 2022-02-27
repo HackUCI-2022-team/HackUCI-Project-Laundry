@@ -5,7 +5,7 @@ from django.dispatch import receiver
 
 # Create your models here
 class Floor(models.Model):
-    floor_key = models.IntegerField()
+    floor_num = models.IntegerField()
 
 class UserProfile(AbstractUser):
     floor_key = models.IntegerField(null=True)

@@ -4,7 +4,7 @@ from django.contrib.auth import login, authenticate, logout
 from .forms import SignUpForm
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
-from .models import Floor
+from .models import Floor, UserProfile, Laundry, Dryer
 
 def pre_home_page(request):
     pass
@@ -19,9 +19,16 @@ def create_floor_if_not_exist(floor_id, floor_key):
     except Exception as e:
         print("floor wasn't created, probably exists already, err msg:", e)
 
-
 @login_required(login_url='login')
 def home_page(request):
+    #user_profiles = UserProfile.objects.filter(floor_key=request.user.floor_key)
+    laundry_machines = Laundry.objects.filter(floor_key=request.user.floor_key)
+    dryer_machines = Dryer.objects.filter(floor_key=request.user.floor_key)
+    
+    context = {
+        'laundry_machines': laundry_machines,
+        'dryer_machines': dryer_machines
+    }
     return render(request, 'home/home.html')
 
 def signup_page(request):
