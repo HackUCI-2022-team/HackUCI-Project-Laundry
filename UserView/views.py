@@ -7,7 +7,7 @@ from django.contrib.auth.decorators import login_required
 from .models import Floor, UserProfile, Laundry, Dryer
 
 def pre_home_page(request):
-    pass
+    return render(request, 'home/index.html', {})
 
 def create_floor_if_not_exist(floor_id, floor_key):
     try:
@@ -29,7 +29,7 @@ def home_page(request):
         'laundry_machines': laundry_machines,
         'dryer_machines': dryer_machines
     }
-    return render(request, 'home/home.html')
+    return render(request, 'home/home.html', context)
 
 def signup_page(request):
     if request.user.is_authenticated:
@@ -69,7 +69,10 @@ def login_page(request):
 		context = {}
 		return render(request, 'home/login.html', context)
 
+@login_required(login_url='login')
 def logout_page(request):
     logout(request)
     return redirect('login')
+
+
 

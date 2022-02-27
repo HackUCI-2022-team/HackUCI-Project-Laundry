@@ -1,3 +1,6 @@
+{% extends 'home/main.html' %}
+
+{% block content %}
 <!DOCTYPE html>
 <html>
 
@@ -15,18 +18,7 @@
 </head>
 
 <body id="page-top" data-bs-spy="scroll" data-bs-target="#mainNav" data-bs-offset="57">
-    <nav class="navbar navbar-light navbar-expand-lg" id="mainNav">
-        <div class="container"><img id="logo" src="../../../static/assets/img/Shopping-basket.png"><a class="navbar-brand" href="#page-top">ZotWash</a><button data-bs-toggle="collapse" data-bs-target="#navbarResponsive" class="navbar-toggler navbar-toggler-right" type="button" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation"><i class="fa fa-align-justify"></i></button>
-            <div class="collapse navbar-collapse" id="navbarResponsive">
-                <ul class="navbar-nav ms-auto">
-                    <li class="nav-item"></li>
-                    <li class="nav-item"></li>
-                    <li class="nav-item"><a class="nav-link" href="#portfolio" style="color: var(--bs-blue);">Sign In</a></li>
-                    <li class="nav-item"><a class="nav-link signUpButton" href="#" style="box-shadow: 0px 0px;">Sign Up</a></li>
-                </ul>
-            </div>
-        </div>
-    </nav>
+    
     <header class="text-center text-white d-flex masthead">
         <div class="container" id="home-contain">
             <div class="row">
@@ -52,5 +44,5 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/baguettebox.js/1.10.0/baguetteBox.min.js"></script>
     <script src="../../../static/assets/js/creative.js"></script>
 </body>
-
 </html>
+{% endblock %}
