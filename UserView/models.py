@@ -1,23 +1,28 @@
 from random import choice
 from django.db import models
-from django.contrib.auth.models import User
+from django.contrib.auth.models import User, AbstractUser
 from django.dispatch import receiver
 
 # Create your models here
 class Floor(models.Model):
-    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    floor_key = models.IntegerField()
+
+class UserProfile(AbstractUser):
+    floor_key = models.IntegerField(null=True)
 
 class Laundry(models.Model):
     heaviness_choices = [
         ('light', 'LIGHT'),
         ('medium', 'MEDIUM'),
-        ('heavy', 'HEAVY')
+        ('heavy', 'HEAVY'),
+        ('off', 'OFF')
     ]
 
     cycle_choices = [
         ('normal', 'NORMAL'),
         ('delicate', 'DELICATE'),
-        ('perm', 'PERM')
+        ('perm', 'PERM'),
+        ('off', 'OFF')
     ]
 
     mode_choices = [
@@ -26,14 +31,14 @@ class Laundry(models.Model):
         ('neutral', 'NEUTRAL')
     ]
 
-    heaviness = models.CharField(choices=heaviness_choices, max_length=6)
-    cycle = models.CharField(choices=cycle_choices, max_length=8)
-    user = models.ForeignKey(User, on_delete=models.CASCADE)
-    mode = models.CharField(choices=mode_choices, max_length=8)
+    heaviness = models.CharField(choices=heaviness_choices, max_length=6, default='off')
+    cycle = models.CharField(choices=cycle_choices, max_length=8, default='off')
+    user = models.ForeignKey(UserProfile, on_delete=models.CASCADE, blank=True, null=True)
+    mode = models.CharField(choices=mode_choices, max_length=8, default='neutral')
     floor_key = models.ForeignKey(Floor, on_delete=models.CASCADE)
 
     def __str__(self) -> str:
-        return self.user + "'s Laundry Machine"
+        return "Laundry on " + str(self.floor_key)
 
 class Dryer(models.Model):
     mode_choices = [
@@ -42,31 +47,17 @@ class Dryer(models.Model):
         ('neutral', 'NEUTRAL')
     ]
 
-    user = models.ForeignKey(User, on_delete=models.CASCADE)
-    mode = models.CharField(choices=mode_choices, max_length=8)
+    user = models.ForeignKey(UserProfile, on_delete=models.CASCADE, blank=True, null=True)
+    mode = models.CharField(choices=mode_choices, max_length=8, default='neutral')
     floor_key = models.ForeignKey(Floor, on_delete=models.CASCADE)
 
     def __str__(self) -> str:
-        return self.user + "'s Dryer Machine"
+        return "Dryer on " + str(self.floor_key)
 
 class Notification(models.Model):
-    recipient = models.ManyToManyField(User)
+    recipient = models.ManyToManyField(UserProfile)
     message = models.TextField()
     sent_date = models.DateTimeField()
 
     def __str__(self) -> str:
         return "Message To: " + self.recipient.username
-
-# class Location(models.Model):
-#     dorm_choices = [
-#         ('mesa', 'MESA'),
-#         ('middle earth', 'MIDDLE EARTH')
-#     ]
-
-#     user = models.ForeignKey(User, on_delete=models.CASCADE)
-#     dorm = models.CharField(choices=dorm_choices, max_length=12)
-#     #hall 
-#     floor = models.ForeignKey(Floor)
-
-#     def __str__(self) -> str:
-#         return self.user + "'s Location"
