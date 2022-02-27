@@ -1,10 +1,9 @@
 from django.shortcuts import render, redirect
-from django.http import HttpResponse
 from django.contrib.auth import login, authenticate, logout
-from .forms import SignUpForm
+from .forms import SignUpForm, LaundryForm, DryerForm
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
-from .models import Floor, UserProfile, Laundry, Dryer
+from .models import Floor, Laundry, Dryer
 
 def pre_home_page(request):
     return render(request, 'home/index.html', {})
@@ -72,7 +71,32 @@ def login_page(request):
 @login_required(login_url='login')
 def logout_page(request):
     logout(request)
-    return redirect('login')
+    return redirect('prehome')
 
+@login_required(login_url='login')
+def update_laundry(request, pk):
+    laundry = Laundry.objects.filter(floor_key=request.user.floor_key)[pk]
+    form = LaundryForm(instance=laundry)
 
+    if request.method == 'POST':
+        form = LaundryForm(request.POST, instance=laundry)
+        if form.is_valid():
+            form.save()
+            return redirect('home')
 
+    context = {'form': form}
+    return render(request, 'home/update_laundry.html', context)
+
+@login_required(login_url='login')
+def update_dryer(request, pk):
+    dryer = Dryer.objects.filter(floor_key=request.user.floor_key)[pk]
+    form = DryerForm(instance=dryer)
+
+    if request.method == 'POST':
+        form = DryerForm(request.POST, instance=dryer)
+        if form.is_valid():
+            form.save()
+            return redirect('home')
+
+    context = {'form': form}
+    return render(request, 'home/update_dryer.html', context)
