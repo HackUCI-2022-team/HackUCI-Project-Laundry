@@ -5,7 +5,7 @@ body{
 .flex{
 height: 80vh;
 width: 60vw;
-position: relative;
+position: absolute;
 border-style: solid;
 border-radius: 7px;
 background-color: #c7e2f0;
@@ -54,6 +54,53 @@ left: 80%;
 }
 
 
+#f{
+  position: absolute;
+  top: 15%;
+  width: 50%;
+  height:20%;
+  left:5%;
+  border-style: solid;
+  border-radius: 7px;
+  background-color: #ffffff;
+  display: grid;
+  place-content: center;
+  font-size: calc(0.8vh + 0.8vw);
+  line-height: 5%;
+}
+
+#r{
+  position: absolute;
+  top: 45%;
+  border-style: solid;
+  border-radius: 7px;
+  background-color: #3cff00;
+  width: 50%;
+  height:20%;
+  left:5%;
+  display: grid;
+  place-content: center;
+  font-size: calc(0.8vh + 0.8vw);
+  line-height: 5%;
+}
+
+#o{
+  position: absolute;
+  top: 75%;
+  border-style: solid;
+  border-radius: 7px;
+  background-color: #ff0000;
+  width: 50%;
+  height:20%;
+  left:5%;
+  display: grid;
+  place-content: center;
+  font-size: calc(0.8vh + 0.8vw);
+  line-height: 5%;
+
+}
+
+
 .row-items{
 background-color: #ffffff;
 width: 13%;
@@ -76,4 +123,35 @@ font-size: calc(1vh + 1vw);
 line-height: 5%;
 border-style: solid;
 border-radius: 8px;
+}
+
+.key{
+  position: absolute;
+  width: 10%;
+  height: 40%;
+  top: 30%;
+  left: 8%;
+}
+
+.key-items{
+  position: absolute;
+}
+
+.key-title{
+  position: absolute;
+  top: 1%;
+  background-color: #ffffff;
+  display: grid;
+  place-content: center;
+  font-size: calc(1vh + 1vw);
+  line-height: 5%;
+  text-align: center;
+
+}
+
+.all{
+  width: 100vw;
+  height: 90vh;
+  position: relative;
+
 }
