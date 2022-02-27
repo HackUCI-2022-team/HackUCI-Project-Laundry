@@ -56,22 +56,24 @@ left: 80%;
 
 .row-items{
 background-color: #ffffff;
-width: 13vh;
-height: 13vh;
-text-align: center;
-font-size: 2vh;
-line-height: 5vw;
+width: 13%;
+height: 17%;
+display: grid;
+place-content: center;
+font-size: calc(1vh + 1vw);
+line-height: 5%;
 border-style: solid;
 border-radius: 8px;
 }
 
 .col-items{
 background-color: #ffffff;
-width: 13vh;
-height: 13vh;
-text-align: center;
-font-size: 2vh;
-line-height: 5vw;
+width: 13%;
+height: 16%;
+display: grid;
+place-content: center;
+font-size: calc(1vh + 1vw);
+line-height: 5%;
 border-style: solid;
 border-radius: 8px;
 }
