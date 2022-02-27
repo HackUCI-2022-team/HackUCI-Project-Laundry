@@ -8,6 +8,7 @@
 
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" type='text/css' href="{% static 'main.css' %}">
 
     <title>ZotWash</title>
     </head>
@@ -40,6 +41,16 @@
           {% endif %}
         </div>
       </nav>
+      <div class="flex">
+        <div class="row-items" id="d1">Dryer</div>
+        <div class="row-items" id="d2">Dryer</div>
+        <div class="row-items" id="d3">Dryer</div>
+        <div class="row-items" id="d4">Dryer</div>
+        <div class="col-items" id="l1">Laundry</div>
+        <div class="col-items" id="l2">Laundry</div>
+        <div class="col-items" id="l3">Laundry</div>
+        <div class="col-items" id="l4">Laundry</div>
+      </div>
 
     {% block content %}
 
