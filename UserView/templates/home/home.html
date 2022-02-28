@@ -6,66 +6,131 @@
     {% if dryer_machines.0.mode == 'neutral' %}
       <a href="{% url 'update-dryer' 0 %}"><button type="button" class="row-items" id="d1">Dryer</button></a> 
     {% elif dryer_machines.0.mode == 'occupied' %}
-      <a href="{% url 'update-dryer' 0 %}"><button style="background-color: red; color: white" type="button" class="row-items" id="d1">Dryer</button></a> 
+      {% if dryer_machines.0.user == request.user %}
+        <a href="{% url 'update-dryer' 0 %}"><button style="background-color: red; color: white" type="button" class="row-items" id="d1">Dryer</button></a> 
+      {% else %}
+        <button style="background-color: red; color: white" type="button" class="row-items" id="d1">Dryer</button>
+      {% endif %}
     {% elif dryer_machines.0.mode == 'free' %}
-      <a href="{% url 'update-dryer' 0 %}"><button type="button" style="background-color: green; color: white;" class="row-items" id="d1">Dryer</button></a> 
+      {% if dryer_machines.0.user == request.user %}
+        <a href="{% url 'update-dryer' 0 %}"><button type="button" style="background-color: green; color: white;" class="row-items" id="d1">Dryer</button></a> 
+      {% else %}
+        <button style="background-color: green; color: white" type="button" class="row-items" id="d1">Dryer</button>
+      {% endif %}
     {% endif %}
 
     {% if dryer_machines.1.mode == 'neutral' %}
-    <a href="{% url 'update-dryer' 1 %}"><button type="button" class="row-items" id="d2">Dryer</button></a> 
-    {% elif dryer_machines.0.mode == 'occupied' %}
-    <a href="{% url 'update-dryer' 1 %}"><button style="background-color: red; color: white" type="button" class="row-items" id="d2">Dryer</button></a> 
+      <a href="{% url 'update-dryer' 1 %}"><button type="button" class="row-items" id="d2">Dryer</button></a> 
+    {% elif dryer_machines.1.mode == 'occupied' %}
+      {% if dryer_machines.1.user == request.user %}
+        <a href="{% url 'update-dryer' 1 %}"><button style="background-color: red; color: white" type="button" class="row-items" id="d2">Dryer</button></a> 
+      {% else %}
+        <button style="background-color: red; color: white" type="button" class="row-items" id="d2">Dryer</button>
+      {% endif %}
     {% elif dryer_machines.1.mode == 'free' %}
-      <a href="{% url 'update-dryer' 1 %}"><button type="button" style="background-color: green; color: white;" class="row-items" id="d2">Dryer</button></a> 
+      {% if dryer_machines.1.user == request.user %}
+        <a href="{% url 'update-dryer' 1 %}"><button type="button" style="background-color: green; color: white;" class="row-items" id="d2">Dryer</button></a> 
+      {% else %}
+        <button style="background-color: green; color: white" type="button" class="row-items" id="d2">Dryer</button>
+      {% endif %}
     {% endif %}
 
     {% if dryer_machines.2.mode == 'neutral' %}
-    <a href="{% url 'update-dryer' 2 %}"><button type="button" class="row-items" id="d3">Dryer</button></a> 
+      <a href="{% url 'update-dryer' 2 %}"><button type="button" class="row-items" id="d3">Dryer</button></a> 
     {% elif dryer_machines.2.mode == 'occupied' %}
-    <a href="{% url 'update-dryer' 2 %}"><button style="background-color: red; color: white" type="button" class="row-items" id="d3">Dryer</button></a> 
+      {% if dryer_machines.2.user == request.user %}
+        <a href="{% url 'update-dryer' 2 %}"><button style="background-color: red; color: white" type="button" class="row-items" id="d3">Dryer</button></a> 
+      {% else %}
+        <button style="background-color: red; color: white" type="button" class="row-items" id="d3">Dryer</button>
+      {% endif %}
     {% elif dryer_machines.2.mode == 'free' %}
-      <a href="{% url 'update-dryer' 2 %}"><button type="button" style="background-color: green; color: white;" class="row-items" id="d3">Dryer</button></a> 
+      {% if dryer_machines.2.user == request.user %}
+        <a href="{% url 'update-dryer' 2 %}"><button type="button" style="background-color: green; color: white;" class="row-items" id="d3">Dryer</button></a> 
+      {% else %}
+        <button style="background-color: green; color: white" type="button" class="row-items" id="d3">Dryer</button>
+      {% endif %}
     {% endif %}
 
     {% if dryer_machines.3.mode == 'neutral' %}
-    <a href="{% url 'update-dryer' 3 %}"><button type="button" class="row-items" id="d4">Dryer</button></a> 
+      <a href="{% url 'update-dryer' 3 %}"><button type="button" class="row-items" id="d4">Dryer</button></a> 
     {% elif dryer_machines.3.mode == 'occupied' %}
-    <a href="{% url 'update-dryer' 3 %}"><button style="background-color: red; color: white" type="button" class="row-items" id="d4">Dryer</button></a> 
+      {% if dryer_machines.3.user == request.user %}
+        <a href="{% url 'update-dryer' 3 %}"><button style="background-color: red; color: white" type="button" class="row-items" id="d4">Dryer</button></a> 
+      {% else %}
+        <button style="background-color: red; color: white" type="button" class="row-items" id="d4">Dryer</button>
+      {% endif %}
     {% elif dryer_machines.3.mode == 'free' %}
-      <a href="{% url 'update-dryer' 3 %}"><button type="button" style="background-color: green; color: white;" class="row-items" id="d4">Dryer</button></a> 
+      {% if dryer_machines.3.user == request.user %}
+        <a href="{% url 'update-dryer' 3 %}"><button type="button" style="background-color: green; color: white;" class="row-items" id="d4">Dryer</button></a> 
+      {% else %}
+        <button style="background-color: green; color: white" type="button" class="row-items" id="d4">Dryer</button>
+      {% endif %}
     {% endif %}
 
     {% if laundry_machines.0.mode == 'neutral' %}
-    <a href="{% url 'update-laundry' 0 %}"><button type="button" class="col-items" id="l1">Laundry</button></a> 
+      <a href="{% url 'update-laundry' 0 %}"><button type="button" class="col-items" id="l1">Laundry</button></a> 
     {% elif laundry_machines.0.mode == 'occupied' %}
-    <a href="{% url 'update-laundry' 0 %}"><button style="background-color: red; color: white" type="button" class="col-items" id="l1">Laundry</button></a> 
+      {% if laundry_machines.0.user == request.user %}
+        <a href="{% url 'update-laundry' 0 %}"><button style="background-color: red; color: white" type="button" class="col-items" id="l1">Laundry</button></a> 
+      {% else %}
+        <button style="background-color: red; color: white" type="button" class="col-items" id="l1">Laundry</button>
+      {% endif %}
     {% elif laundry_machines.0.mode == 'free' %}
-      <a href="{% url 'update-laundry' 0 %}"><button type="button" style="background-color: green; color: white;" class="row-items" id="l1">Laundry</button></a> 
+      {% if laundry_machines.0.user == request.user %}
+        <a href="{% url 'update-laundry' 0 %}"><button type="button" style="background-color: green; color: white;" class="col-items" id="l1">Laundry</button></a> 
+      {% else %}
+        <button style="background-color: green; color: white" type="button" class="col-items" id="l1">Laundry</button>
+      {% endif %}
     {% endif %}
 
     {% if laundry_machines.1.mode == 'neutral' %}
-    <a href="{% url 'update-laundry' 1 %}"><button type="button" class="col-items" id="l2">Laundry</button></a> 
+      <a href="{% url 'update-laundry' 1 %}"><button type="button" class="col-items" id="l2">Laundry</button></a> 
     {% elif laundry_machines.1.mode == 'occupied' %}
-    <a href="{% url 'update-laundry' 1 %}"><button style="background-color: red; color: white" type="button" class="col-items" id="l2">Laundry</button></a> 
+      {% if laundry_machines.1.user == request.user %}
+        <a href="{% url 'update-laundry' 1 %}"><button style="background-color: red; color: white" type="button" class="col-items" id="l2">Laundry</button></a> 
+      {% else %}
+        <button style="background-color: red; color: white" type="button" class="col-items" id="l2">Laundry</button>
+      {% endif %}
     {% elif laundry_machines.1.mode == 'free' %}
-      <a href="{% url 'update-laundry' 1 %}"><button type="button" style="background-color: green; color: white;" class="row-items" id="l2">Laundry</button></a> 
+      {% if laundry_machines.1.user == request.user %}
+        <a href="{% url 'update-laundry' 1 %}"><button type="button" style="background-color: green; color: white;" class="col-items" id="l2">Laundry</button></a> 
+      {% else %}
+        <button style="background-color: green; color: white" type="button" class="col-items" id="l2">Laundry</button>
+      {% endif %}
     {% endif %}
 
     {% if laundry_machines.2.mode == 'neutral' %}
-    <a href="{% url 'update-laundry' 2 %}"><button type="button" class="col-items" id="l3">Laundry</button></a> 
+      <a href="{% url 'update-laundry' 2 %}"><button type="button" class="col-items" id="l3">Laundry</button></a> 
     {% elif laundry_machines.2.mode == 'occupied' %}
-    <a href="{% url 'update-laundry' 2 %}"><button style="background-color: red; color: white" type="button" class="col-items" id="l3">Laundry</button></a> 
+      {% if laundry_machines.2.user == request.user %}
+        <a href="{% url 'update-laundry' 2 %}"><button style="background-color: red; color: white" type="button" class="col-items" id="l3">Laundry</button></a> 
+      {% else %}
+        <button style="background-color: red; color: white" type="button" class="col-items" id="l3">Laundry</button>
+      {% endif %}
     {% elif laundry_machines.2.mode == 'free' %}
-      <a href="{% url 'update-laundry' 2 %}"><button type="button" style="background-color: green; color: white;" class="row-items" id="l3">Laundry</button></a> 
+      {% if laundry_machines.2.user == request.user %}
+        <a href="{% url 'update-laundry' 2 %}"><button type="button" style="background-color: green; color: white;" class="col-items" id="l3">Laundry</button></a> 
+      {% else %}
+        <button style="background-color: green; color: white" type="button" class="col-items" id="l3">Laundry</button>
+      {% endif %}
     {% endif %}
 
     {% if laundry_machines.3.mode == 'neutral' %}
-    <a href="{% url 'update-laundry' 3 %}"><button type="button" class="col-items" id="l4">Laundry</button></a> 
-    {% elif laundry_machines.3.mode == 'occupied' %}
-    <a href="{% url 'update-laundry' 3 %}"><button style="background-color: red; color: white" type="button" class="col-items" id="l4">Laundry</button></a> 
+      <a href="{% url 'update-laundry' 3 %}"><button type="button" class="col-items" id="l4">Laundry</button></a> 
+    {% elif laundry_machines.0.mode == 'occupied' %}
+      {% if laundry_machines.3.user == request.user %}
+        <a href="{% url 'update-laundry' 3 %}"><button style="background-color: red; color: white" type="button" class="col-items" id="l4">Laundry</button></a> 
+      {% else %}
+        <button style="background-color: red; color: white" type="button" class="col-items" id="l4">Laundry</button>
+      {% endif %}
     {% elif laundry_machines.3.mode == 'free' %}
-      <a href="{% url 'update-laundry' 3 %}"><button type="button" style="background-color: green; color: white;" class="row-items" id="l4">Laundry</button></a> 
+      {% if laundry_machines.3.user == request.user %}
+        <a href="{% url 'update-laundry' 3 %}"><button type="button" style="background-color: green; color: white;" class="col-items" id="l4">Laundry</button></a> 
+      {% else %}
+        <button style="background-color: green; color: white" type="button" class="col-items" id="l4">Laundry</button>
+      {% endif %}
     {% endif %}
+
   </div>
   <div class="key">   
     <div class="key-title">Key:</div>   

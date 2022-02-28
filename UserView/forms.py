@@ -7,12 +7,12 @@ from django.contrib.auth.forms import UserCreationForm
 class LaundryForm(ModelForm):
     class Meta:
         model = Laundry
-        fields = ['heaviness', 'cycle', 'mode']
+        fields = ['user', 'heaviness', 'cycle', 'mode']
 
 class DryerForm(ModelForm):
     class Meta:
         model = Dryer
-        fields = ['mode']
+        fields = ['user', 'mode']
 
 class SignUpForm(UserCreationForm):
     email = forms.EmailField(max_length=254)

@@ -81,6 +81,9 @@ def update_laundry(request, pk):
     if request.method == 'POST':
         form = LaundryForm(request.POST, instance=laundry)
         if form.is_valid():
+            if form.fields['mode'] != 'neutral':
+                laundry.user = request.user
+                laundry.save()
             form.save()
             return redirect('home')
 
@@ -91,10 +94,13 @@ def update_laundry(request, pk):
 def update_dryer(request, pk):
     dryer = Dryer.objects.filter(floor_key=request.user.floor_key)[pk]
     form = DryerForm(instance=dryer)
-
+    
     if request.method == 'POST':
         form = DryerForm(request.POST, instance=dryer)
         if form.is_valid():
+            if form.fields['mode'] != 'neutral':
+                dryer.user = request.user
+                dryer.save()
             form.save()
             return redirect('home')
 
