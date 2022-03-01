@@ -1,0 +1,64 @@
+.navbar-brand {
+  font-style: normal;
+  font-family: 'Open Sans', sans-serif;
+}
+
+#mainNav .navbar-brand {
+  font-weight: 700;
+  color: var(--bs-blue);
+  font-family: "Open Sans","Helvetica Neue",Arial,sans-serif;
+  text-transform: none;
+  /*background: rgba(255,255,255,0);*/
+}
+
+#mainNav .navbar-nav > li.nav-item > a.nav-link, #mainNav .navbar-nav > li.nav-item > a.nav-link:focus {
+  color: var(--bs-white);
+}
+
+.signUpButton:hover {
+  background-color: rgb(121,130,214);
+}
+
+.signUpButton {
+  background-color: var(--bs-blue);
+  color: #fff;
+  border-radius: 40px;
+}
+
+#home-qt {
+  color: var(--bs-blue);
+  margin: 50px;
+  font-size: 40px;
+  font-family: FakePearl;
+}
+
+.mb-5 {
+  margin-bottom: 1rem !important;
+}
+
+.btn-xl {
+  margin-left: 20px;
+  margin-right: 20px;
+}
+
+#home-contain {
+  margin-top: 150px;
+}
+
+#home-contain h1 {
+  color: var(--bs-blue);
+}
+
+#h1-word {
+  font-size: 20px;
+}
+
+#mainNav .navbar-brand:focus, #mainNav .navbar-brand:hover {
+  color: var(--bs-blue);
+}
+
+
+
+#mainNav .navbar-nav>li.nav-item>a.nav-link:hover, #mainNav .navbar-nav>li.nav-item>a.nav-link:focus:hover {
+  color: #fff;
+}

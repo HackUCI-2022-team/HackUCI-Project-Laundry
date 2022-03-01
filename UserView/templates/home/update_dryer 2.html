@@ -1,0 +1,54 @@
+{% extends 'home/main.html' %}
+
+{% block content %}
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <title>submit</title>
+    <link rel="stylesheet" href="../../../static/assets/bootstrap/css/bootstrap.min.submit.css">
+    <link rel="stylesheet" href="../../../static/assets/css/FakePearl.css">
+    <link rel="stylesheet" href="../../../static/assets/css/submit.css">
+</head>
+
+<body>
+<form action="" method="POST">
+	{% csrf_token %}
+	<div class="submit-section">
+        <div class="submit-form" style="opacity: 1;">
+            <form style="border-style: none;padding-right: 20px;padding-left: 20px;">
+                <div class="container">
+                    <div class="row" style="margin-right: -5px;">
+                        <div class="col-md-8" style="border-top-left-radius: 1000;border-style: none;padding: 10px;padding-bottom: 10px;margin: 0 auto;">
+                            <div style="margin-bottom: 0px;background: rgb(239, 241, 246);border-radius: 16px;" class="form-group mb-3">
+                                <p class="label" style="margin-bottom: 0px;text-align: left;padding-left: 15px;border-radius: 16px;color: rgb(110,113,145);">UCI Net ID</p><input class="form-control item" type="text" id="username" name="job_title" style="border-style: none;border-color: var(--white);margin-bottom: 0px;padding-bottom: 0px;padding-top: 0px;border-radius: 16px;height: 39px;">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+				<div class="outside" style="width: min-content; margin: 0 auto;">
+					<div class="container">
+                    <div class="row" style="width: 400px;">
+                        <div class="col-md-8" style="border-top-left-radius: 1000;border-style: none;padding: 10px;padding-bottom: 10px;">
+                            <div style="margin-bottom: 0px;background: rgb(239, 241, 246);border-radius: 16px;" class="form-group mb-3">
+                                <h1 id="label-mode-3" class="label" style="font-family: FakePearl;">Mode:</h1>
+                                <p style="margin-bottom: 0px;text-align: left;padding-left: 15px;border-radius: 16px;color: rgb(110,113,145);"></p>
+                            </div>
+                        </div>
+                        <div class="col-4">
+                            {{ form.mode }}
+                        </div>
+                    </div>
+                </div>
+			</div>
+                <div class="container">
+                    <div class="row">
+						<div class="col-md-8" style="margin: 0 auto; width:40%"><button type="submit" class="btn btn-outline-primary" style="width:100%;">Submit</button></div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+    <script src="assets/bootstrap/js/bootstrap.min.js"></script>
+</form>
+</body>
+{% endblock %}
