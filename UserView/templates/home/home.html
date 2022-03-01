@@ -7,7 +7,7 @@
       <a href="{% url 'update-dryer' 0 %}"><button type="button" class="row-items" id="d1">Dryer</button></a> 
     {% elif dryer_machines.0.mode == 'occupied' %}
       {% if dryer_machines.0.user == request.user %}
-        <a href="{% url 'update-dryer' 0 %}"><button style="background-color: red; color: white" type="button" class="row-items" id="d1">Dryer</button></a> 
+        <a href="{% url 'update-dryer' 0 %}"><button style="background-color: #e74f4e; color: white" type="button" class="row-items" id="d1">Dryer</button></a> 
       {% else %}
         <button style="background-color: red; color: white" type="button" class="row-items" id="d1">Dryer</button>
       {% endif %}
